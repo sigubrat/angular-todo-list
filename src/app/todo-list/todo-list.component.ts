@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ITEMS } from '../mock-items';
 import { Item } from '../item';
+import { ItemsService } from '../items.service';
 
 @Component({
   selector: 'app-todo-list',
@@ -8,13 +9,13 @@ import { Item } from '../item';
   styleUrls: ['./todo-list.component.css']
 })
 export class TodoListComponent implements OnInit {
-  items = ITEMS; // A collection of items (temporary declaration. Should come from a server)
-  doneItems?: Item[] = [] // Stores done items
-  selectedItem?: Item; // The currently selected item in the list. Displays details. 
+  items: Item[] = [];     // A collection of items (temporary declaration. Should come from a server)
+  selectedItem?: Item;    // The currently selected item in the list. Displays details. 
 
-  constructor() { }
+  constructor(private itemService: ItemsService) { }
 
   ngOnInit(): void {
+    this.getItems();
   }
 
   // Select an item
@@ -23,20 +24,27 @@ export class TodoListComponent implements OnInit {
   }
 
   // Mark an item as done
-  onDone(item: Item): void {
+  onChange(item: Item): void {
     // Mark item as done
-    item.done = true;
-    // Get index in array
-    // Remove from items, and add to doneItems
-    const index: number = this.items.indexOf(item);
-    if (index !== -1){
-      this.items.splice(index, 1);
-    }
+    item.done = !item.done;
+    this.itemService.updateState(item);
+  }
+
+  // Deletes an item
+  onDelete(item: Item): void {
+    this.itemService.deleteItem(item);
   }
 
   // Create an item
-  addItem(newTitle: string, newDescription: string){
-    const new_item: Item = {title: newTitle, description: newDescription, done: false};
-    this.items.push(new_item)
+  addItem(title: string, description: string){
+    const done:boolean = false;
+    this.itemService.addItem({title, description, done} as Item)
+      .subscribe(item => {
+        this.items.push(item);
+      })
+  }
+
+  getItems(): void {
+     this.itemService.getItems().subscribe(items => this.items = items);
   }
 }

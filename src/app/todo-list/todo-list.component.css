@@ -20,6 +20,10 @@
     width: 18%;
 }
 
+.button {
+    transition-duration: 0.4s;
+}
+
 .btnDone {
     background-color: #fbfbfff3; 
     border: 1px solid;
@@ -30,6 +34,23 @@
     display: inline-block;
     font-size: 16px;
     width: auto;
+}
+
+.btnDel {
+    background-color: #f44336; 
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: auto;
+}
+
+.btnDel:hover {
+    background-color: white;
+    border: 2px solid #f44336;
+    color: black;
 }
 
 .addItem {

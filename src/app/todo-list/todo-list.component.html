@@ -5,17 +5,32 @@
         <p>
             <label for="new-desc">Description:</label>
             <input type="text" id="new-desc" #newDesc/>
-            <button type="button" (click)="addItem(newTitle.value, newDesc.value)">Add</button>
+            <button type="button" (click)="addItem(newTitle.value, newDesc.value); newTitle.value=''; newDesc.value=''">Add</button>
         </p>
         
     </div>
     
     <ul class="items">
         <li *ngFor="let item of items">
-            <button type="button" class="item-title" (click)="onSelect(item)"> {{item.title}} </button>
-            <button type="button" class="btnDone" (click)="onDone(item)">Done!</button> 
+            <span *ngIf="item.done == false">
+                <button type="button" class="item-title" (click)="onSelect(item)"> {{item.title}} </button>
+                <button type="button" class="button btnDone" (click)="onChange(item)">Done!</button>
+                <button type="button" class="button btnDel" (click)="onDelete(item)">Delete!</button>
+            </span>
         </li>
     </ul>
+
+    <ul class="items">
+        <h2 class="title_h2">Completed Items: </h2>
+        <li *ngFor="let item of items">
+            <span *ngIf="item.done == true">
+                <button type="button" class="item-title" (click)="onSelect(item)"> {{item.title}} </button>
+                <button type="button" class="button btnDone" (click)="onChange(item)">Undo!</button>
+                <button type="button" class="button btnDel" (click)="onDelete(item)">Delete!</button>
+            </span>
+        </li>
+    </ul>
+
     <app-item-detail [item]="selectedItem"></app-item-detail>
 </div>
 
