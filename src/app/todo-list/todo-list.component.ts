@@ -33,4 +33,10 @@ export class TodoListComponent implements OnInit {
       this.items.splice(index, 1);
     }
   }
+
+  // Create an item
+  addItem(newTitle: string, newDescription: string){
+    const new_item: Item = {title: newTitle, description: newDescription, done: false};
+    this.items.push(new_item)
+  }
 }

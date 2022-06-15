@@ -1,8 +1,5 @@
  /* todo-list-component private CSS styles */
 
-.list {
-    padding-left: 20%;
-}
 
 .items {
     margin: 0 0 2em 0;
@@ -24,7 +21,7 @@
 }
 
 .btnDone {
-    background-color: #b2b2b867; 
+    background-color: #fbfbfff3; 
     border: 1px solid;
     color: rgb(0, 0, 0);
     padding: 15px 32px;
@@ -35,3 +32,10 @@
     width: auto;
 }
 
+.addItem {
+    text-align: center;
+    color: white;
+    padding-left: 42%;
+    padding-right: 42%;
+    width: auto;
+}

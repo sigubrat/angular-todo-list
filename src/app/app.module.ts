@@ -6,15 +6,16 @@ import { AppComponent } from './app.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { ItemDetailComponent } from './item-detail/item-detail.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     TodoListComponent,
-    ItemDetailComponent
+    ItemDetailComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
