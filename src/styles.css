@@ -1,1 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+html, body { height: 100% !important }
+body { background-image: linear-gradient(to bottom, #0b7fccfd, #f3f3f3fd)}
+
+.title_h2 {
+    color: white;
+    font-size: xx-large;
+}
