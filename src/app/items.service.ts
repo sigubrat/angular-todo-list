@@ -34,7 +34,7 @@ httpOptions = {
     return this.http.put<Item>(this.itemUrl, item, this.httpOptions);
   }
 
-  deleteItem(item: Item) {
+  deleteItem(item: Item): Observable<Item> {
     console.log('Sending delete-post to URL: '+ this.itemUrl+'/'+item.id)
     return this.http.delete<Item>(this.itemUrl+'/'+item.id);
   }

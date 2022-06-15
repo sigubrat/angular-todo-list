@@ -27,12 +27,14 @@ export class TodoListComponent implements OnInit {
   onChange(item: Item): void {
     // Mark item as done
     item.done = !item.done;
-    this.itemService.updateState(item);
+    this.itemService.updateState(item).subscribe((ret) => {console.log("Item updated: ", ret)});
   }
 
   // Deletes an item
   onDelete(item: Item): void {
-    this.itemService.deleteItem(item);
+    this.itemService.deleteItem(item).subscribe(response => {
+      this.items = this.items.filter(nitem => nitem.id !== item.id)
+    });
   }
 
   // Create an item
