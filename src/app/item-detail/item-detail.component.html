@@ -1,0 +1,13 @@
+<div *ngIf="item">
+    <h2> {{item.title}} Details</h2>
+    <div>
+        <p><label for="item-description">Description: </label>
+            <span id="item-description">{{item.description}}</span>
+        </p>
+        <p><label for="item-status">Status: </label>
+            <span id="item-status" *ngIf="item.done == true">Done!</span>
+            <span id="item-status" *ngIf="item.done == false">Not Completed!</span>
+        </p>
+    </div>
+</div>
+

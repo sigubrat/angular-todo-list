@@ -1,1 +1,9 @@
-<p>todo-list works!</p>
+<h2>Items to do!</h2>
+<ul class="items">
+    <li *ngFor="let item of items">
+        <button type="button" (click)="onSelect(item)"> {{item.title}} </button>
+        <button type="button" (click)="onDone(item)">Done!</button> 
+    </li>
+</ul>
+
+<app-item-detail [item]="selectedItem"></app-item-detail>
